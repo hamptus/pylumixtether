@@ -1,14 +1,14 @@
 import usb.core
+from constants import LMX_EVENT_ID
 
 VENDOR_ID = 0x04da
 PRODUCT_ID = 0x2382  # Panasonic G9
 
-LMX_DEF_LIB_EVENT_ID_REC_CTRL_RELEASE = 0x03000010
-LMX_DEF_LIB_EVENT_ID_REC_CTRL_AFAE = 0x03000020
-LMX_DEF_LIB_TAG_REC_CTRL_RELEASE_ONESHOT = LMX_DEF_LIB_EVENT_ID_REC_CTRL_RELEASE + 1
-
 # TODO: Figure out what each of these do
 _SUFFIX = 0x000010809404000100000010
+
+SINGLE_SHOT = _SUFFIX.to_bytes(12, 'little') + \
+              LMX_EVENT_ID.LMX_DEF_LIB_TAG_REC_CTRL_RELEASE_ONESHOT.value.to_bytes(4, 'little')
 
 
 class Camera:
@@ -27,8 +27,7 @@ class Camera:
         return self.interface.endpoints()
 
     def snap(self):
-        cmd = _SUFFIX.to_bytes(12, 'little') + LMX_DEF_LIB_TAG_REC_CTRL_RELEASE_ONESHOT.to_bytes(4, 'little')
-        self.endpoints[0].write(cmd)
+        self.endpoints[0].write(SINGLE_SHOT)
 
     def read(self):
         return self.endpoints[1].read(self.endpoints[1].wMaxPacketSize)

@@ -60,3 +60,23 @@ class LMX_ERROR_CODE(Enum):
     LMX_DEF_ERR_CAM_INVALID_MODE = auto()  # Camera Command Error: Invalid mode error
 
     LMX_DEF_ERR_MAX = auto()  # Error: Other
+
+
+class LMX_EVENT_ID(Enum):
+    LMX_DEF_LIB_EVENT_ID_ISO = 0x02000020  # Event/Callback registration ID:ISO information
+    LMX_DEF_LIB_EVENT_ID_SHUTTER = 0x02000030  # Event/Callback registration ID:ShutterSpeed information
+    LMX_DEF_LIB_EVENT_ID_APERTURE = 0x02000040  # Event/Callback registration ID:Apertuer information
+    LMX_DEF_LIB_EVENT_ID_WHITEBALANCE = 0x02000050  # Event/Callback registration ID:WhiteBalance information
+    LMX_DEF_LIB_EVENT_ID_EXPOSURE = 0x02000060  # Event/Callback registration ID:Exposure
+    LMX_DEF_LIB_EVENT_ID_AF_CONFIG = 0x02000070  # Event/Callback registration ID:AF mode/AF area
+
+    LMX_DEF_LIB_EVENT_ID_REC_CTRL_RELEASE = 0x03000010  # Event/Callback registration ID:Shooting operation
+    LMX_DEF_LIB_TAG_REC_CTRL_RELEASE_ONESHOT = auto()
+
+    LMX_DEF_LIB_EVENT_ID_REC_CTRL_AFAE = 0x03000020  # Event/Callback registration ID:Shooting operation
+    LMX_DEF_LIB_EVENT_ID_REC_CTRL_ZOOM = 0x03000080  # Event/Callback registration ID:Shooting operation
+    LMX_DEF_LIB_EVENT_ID_REC_CTRL_LENS = 0x03010010  # Event/Callback registration ID:Lens operation
+
+    LMX_DEF_LIB_EVENT_ID_OBJCT_ADD = 0x10000040  # Event/Callback registration ID:Object related notification:Add object
+
+    LMX_DEF_LIB_EVENT_ID_OBJCT_REQ_TRNSFER = 0x10000043  # Event/Callback registration ID:Object related notification:Transfer request
