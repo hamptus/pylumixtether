@@ -80,3 +80,21 @@ class LMX_EVENT_ID(Enum):
     LMX_DEF_LIB_EVENT_ID_OBJCT_ADD = 0x10000040  # Event/Callback registration ID:Object related notification:Add object
 
     LMX_DEF_LIB_EVENT_ID_OBJCT_REQ_TRNSFER = 0x10000043  # Event/Callback registration ID:Object related notification:Transfer request
+
+
+class LMX_OBJECT_FORMAT(Enum):
+    LMX_DEF_OBJ_FORMAT_UNKNOWN = 0
+    LMX_DEF_OBJ_FORMAT_JPEG = auto()
+    LMX_DEF_OBJ_FORMAT_RAW = auto()
+    LMX_DEF_OBJ_FORMAT_FOLDER = auto()
+    LMX_DEF_OBJ_FORMAT_MOVIE_MOV = auto()
+    LMX_DEF_OBJ_FORMAT_MOVIE_MP4 = auto()
+    LMX_DEF_OBJ_FORMAT_HLG = auto()
+    LMX_DEF_OBJ_FORMAT_MAX = auto()
+    LMX_DEF_OBJ_CARDLESS_TRNSFER_HDL = 0x12345678
+
+
+class LMX_ISO_PARAM(Enum):
+    LMX_DEF_ISO_UNKNOWN = 0xFFFFFFFD  # ISO Unknown
+    LMX_DEF_ISO_I_ISO = 0xFFFFFFFE  # i_ISO
+    LMX_DEF_ISO_AUTO = 0xFFFFFFFF  # ISO Auto
