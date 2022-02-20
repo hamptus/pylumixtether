@@ -57,9 +57,9 @@ class LMX_ERROR_CODE(Enum):
     LMX_DEF_ERR_DEV_FWUP_ERROR_VERSION = auto()  # Internal Error: FWUP preparation error(firmware up complete: failure: version)
 
     LMX_DEF_ERR_CAM = 0x00100000  # Camera Command Error:
-    LMX_DEF_ERR_CAM_INVALID_MODE = auto()  # Camera Command Error: Invalid mode error
+    LMX_DEF_ERR_CAM_INVALID_MODE = 0x00100001  # Camera Command Error: Invalid mode error
 
-    LMX_DEF_ERR_MAX = auto()  # Error: Other
+    LMX_DEF_ERR_MAX = 0x00100002  # Error: Other
 
 
 class LMX_EVENT_ID(Enum):
@@ -71,7 +71,7 @@ class LMX_EVENT_ID(Enum):
     LMX_DEF_LIB_EVENT_ID_AF_CONFIG = 0x02000070  # Event/Callback registration ID:AF mode/AF area
 
     LMX_DEF_LIB_EVENT_ID_REC_CTRL_RELEASE = 0x03000010  # Event/Callback registration ID:Shooting operation
-    LMX_DEF_LIB_TAG_REC_CTRL_RELEASE_ONESHOT = auto()
+    LMX_DEF_LIB_TAG_REC_CTRL_RELEASE_ONESHOT = 0x03000011
 
     LMX_DEF_LIB_EVENT_ID_REC_CTRL_AFAE = 0x03000020  # Event/Callback registration ID:Shooting operation
     LMX_DEF_LIB_EVENT_ID_REC_CTRL_ZOOM = 0x03000080  # Event/Callback registration ID:Shooting operation
@@ -84,13 +84,13 @@ class LMX_EVENT_ID(Enum):
 
 class LMX_OBJECT_FORMAT(Enum):
     LMX_DEF_OBJ_FORMAT_UNKNOWN = 0
-    LMX_DEF_OBJ_FORMAT_JPEG = auto()
-    LMX_DEF_OBJ_FORMAT_RAW = auto()
-    LMX_DEF_OBJ_FORMAT_FOLDER = auto()
-    LMX_DEF_OBJ_FORMAT_MOVIE_MOV = auto()
-    LMX_DEF_OBJ_FORMAT_MOVIE_MP4 = auto()
-    LMX_DEF_OBJ_FORMAT_HLG = auto()
-    LMX_DEF_OBJ_FORMAT_MAX = auto()
+    LMX_DEF_OBJ_FORMAT_JPEG = 1
+    LMX_DEF_OBJ_FORMAT_RAW = 2
+    LMX_DEF_OBJ_FORMAT_FOLDER = 3
+    LMX_DEF_OBJ_FORMAT_MOVIE_MOV = 4
+    LMX_DEF_OBJ_FORMAT_MOVIE_MP4 = 5
+    LMX_DEF_OBJ_FORMAT_HLG = 6
+    LMX_DEF_OBJ_FORMAT_MAX = 7
     LMX_DEF_OBJ_CARDLESS_TRNSFER_HDL = 0x12345678
 
 
@@ -98,3 +98,46 @@ class LMX_ISO_PARAM(Enum):
     LMX_DEF_ISO_UNKNOWN = 0xFFFFFFFD  # ISO Unknown
     LMX_DEF_ISO_I_ISO = 0xFFFFFFFE  # i_ISO
     LMX_DEF_ISO_AUTO = 0xFFFFFFFF  # ISO Auto
+
+
+RESPONSE_CODES = {
+    0x2000: "Undefined",
+    0x2001: "OK",
+    0x2002: "General Error",
+    0x2003: "Session Not Open",
+    0x2004: "Invalid TransactionID",
+    0x2005: "Operation Not Supported",
+    0x2006: "Parameter Not Supported",
+    0x2007: "Incomplete Transfer",
+    0x2008: "Invalid StorageID",
+    0x2009: "Invalid ObjectHandle",
+    0x200A: "DeviceProp Not Supported",
+    0x200B: "Invalid ObjectFormatCode",
+    0x200C: "Store Full",
+    0x200D: "Object WriteProtected",
+    0x200E: "Store Read-Only",
+    0x200F: "Access Denied",
+    0x2010: "No Thumbnail Present",
+    0x2011: "SelfTest Failed",
+    0x2012: "Partial Deletion",
+    0x2013: "Store Not Available",
+    0x2014: "Specification By Format Unsupported",
+    0x2015: "No Valid ObjectInfo",
+    0x2016: "Invalid Code Format",
+    0x2017: "Unknown Vendor Code",
+    0x2018: "Capture Already Terminated",
+    0x2019: "Device Busy",
+    0x201A: "Invalid ParentObject",
+    0x201B: "Invalid DeviceProp Format",
+    0x201C: "Invalid DeviceProp Value",
+    0x201D: "Invalid Parameter",
+    0x201E: "Session Already Open",
+    0x201F: "Transaction Cancelled",
+    0x2020: "Specification of Destination Unsupported",
+    0x0010: "Reserved",
+    0x1010: "Vendor-Extended Response Code",
+}
+
+CALLBACK_TYPE = {
+    0x02000020: ''
+}
