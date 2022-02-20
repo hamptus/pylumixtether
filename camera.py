@@ -78,6 +78,32 @@ class Camera:
 
         return self.read()
 
+    def set_shutter_speed(self, ss):
+        self.inc_count()
+        # FIXME: Bulb and auto don't work yet on the g9
+        if ss.lower() == 'bulb':
+            ss = 0xFFFFFFFF
+        elif ss.lower() == 'auto':
+            ss = 0x0FFFFFFF
+        else:
+            split_ss = ss.split("/")
+            if len(split_ss) == 1:
+                ss = (int(ss) * 1000) + 0x8000000
+            else:
+                ss = int(split_ss[-1]) * 1000
+
+        length = 0x18000000.to_bytes(4, 'big')
+        container_type = 0x0200.to_bytes(2, 'big')
+
+        code = 0x0394.to_bytes(2, 'big')
+        transaction_id = self._transaction_id
+        event_id = (LMX_EVENT_ID.LMX_DEF_LIB_EVENT_ID_SHUTTER.value + 1).to_bytes(4, 'little')
+        data = length + container_type + code + transaction_id.to_bytes(4, 'little') + event_id
+        self.write(data)
+        # FIXME: Figure out the purpose of 0x04000000
+        self.write(data + b'\x04\x00\x00\x00' + ss.to_bytes(4, 'little'))
+        return self.read()
+
     # def call_init(self):
     #     self.write(b"\x0c\x00\x00\x00\x01\x00\x01\x10\x00\x00\x00\x00")
     #     return self.read()
