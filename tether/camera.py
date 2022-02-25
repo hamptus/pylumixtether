@@ -1,6 +1,6 @@
 import usb.core
-from constants import LMX_EVENT_ID, RESPONSE_CODES
-from ptp import GenericContainer
+from .constants import LMX_EVENT_ID, RESPONSE_CODES
+from .ptp import GenericContainer
 
 VENDOR_ID = 0x04da
 PRODUCT_ID = 0x2382  # Panasonic G9
